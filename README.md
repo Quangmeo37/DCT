@@ -1,22 +1,39 @@
-﻿# DCT
-Hệ thống được xây dựng nhằm thực hiện nén ảnh số dựa trên thuật toán Biến đổi Cosine rời rạc (Discrete Cosine Transform – DCT), một phương pháp phổ biến trong các chuẩn nén ảnh như JPEG. Mục tiêu của hệ thống là giảm kích thước lưu trữ của ảnh trong khi vẫn giữ được chất lượng hình ảnh ở mức chấp nhận được.
+# 📸 DCT Image Compression
 
-Hệ thống hỗ trợ xử lý ảnh màu (RGB), trong đó mỗi kênh màu (Red, Green, Blue) được xử lý độc lập thông qua quy trình nén. Điều này giúp mô phỏng gần với các hệ thống nén ảnh thực tế.
-Chức năng chính của hệ thống
+Ứng dụng nén ảnh sử dụng thuật toán **Discrete Cosine Transform (DCT)** – nền tảng của chuẩn JPEG.
 
-Hệ thống cung cấp các chức năng cơ bản sau:
+---
 
-Chọn ảnh đầu vào:
-Người dùng có thể chọn ảnh từ máy tính thông qua giao diện đồ họa.
-Hiển thị ảnh gốc:
-Ảnh sau khi chọn sẽ được hiển thị trực tiếp trên giao diện với đầy đủ màu sắc.
-Nén ảnh bằng DCT:
-Ảnh được xử lý qua các bước:
-Chia thành các khối 8x8
-Áp dụng biến đổi DCT
-Lượng tử hóa
-Biến đổi ngược (IDCT) để tái tạo ảnh
-Hiển thị ảnh sau nén:
-Ảnh sau khi nén được hiển thị song song với ảnh gốc để so sánh trực quan.
-Lưu ảnh sau nén:
-Người dùng có thể chọn tên file và vị trí lưu ảnh sau khi nén.
+## 🧠 Giới thiệu
+
+Hệ thống được xây dựng nhằm thực hiện nén ảnh số dựa trên thuật toán **DCT (Discrete Cosine Transform)**.  
+Mục tiêu là giảm kích thước lưu trữ của ảnh nhưng vẫn giữ chất lượng ở mức chấp nhận được.
+
+Hệ thống hỗ trợ **ảnh màu (RGB)**, trong đó mỗi kênh màu (R, G, B) được xử lý độc lập, mô phỏng gần với các hệ thống nén ảnh thực tế.
+
+---
+
+## ⚙️ Chức năng chính
+
+### 📂 Chọn ảnh đầu vào
+- Người dùng chọn ảnh từ máy tính
+
+### 🖼️ Hiển thị ảnh gốc
+- Ảnh hiển thị đầy đủ màu sắc
+
+### 🔄 Nén ảnh bằng DCT
+Quy trình gồm:
+- Chia ảnh thành các block **8x8**
+- Áp dụng **DCT**
+- **Lượng tử hóa**
+- **IDCT** để tái tạo ảnh
+
+### 📊 Hiển thị kết quả
+- So sánh ảnh **trước và sau nén**
+
+### 💾 Lưu ảnh
+- Cho phép chọn **tên file** và **đường dẫn lưu**
+
+---
+
+## 🏗️ Kiến trúc hệ thống
