@@ -62,8 +62,9 @@ class App:
         self.compressed_image = None
 
         # Buttons
-        tk.Button(root, text="Chọn ảnh", width=20, command=self.open_image).pack(pady=10)
+        tk.Button(root, text="Chọn ảnh", width=20, command=self.open_image).pack(pady=5)
         tk.Button(root, text="Nén ảnh", width=20, command=self.compress_image).pack(pady=5)
+        tk.Button(root, text="Lưu ảnh", width=20, command=self.save_compressed_image).pack(pady=5)
 
         # Frame
         self.frame = tk.Frame(root)
@@ -92,7 +93,7 @@ class App:
 
         self.canvas_compressed.delete("all")
 
-    # nén ảnh và lưu
+    # nén ảnh 
     def compress_image(self):
         if self.original_image is None:
             messagebox.showwarning("Lỗi", "Vui lòng chọn ảnh trước!")
@@ -101,16 +102,6 @@ class App:
         self.compressed_image = compress_image_array(self.original_image)
 
         self.show_image(self.compressed_image, self.canvas_compressed)
-
-        # lưu đường dẫn
-        file_path = filedialog.asksaveasfilename(
-            defaultextension=".jpg",
-            filetypes=[("JPEG", "*.jpg"), ("PNG", "*.png")]
-        )
-
-        if file_path:
-            save_image(self.compressed_image, file_path)
-            messagebox.showinfo("OK", "Đã lưu ảnh!")
 
     # hiển thị ảnh
     def show_image(self, img_array, canvas):
@@ -125,6 +116,27 @@ class App:
         canvas.create_image(0, 0, anchor="nw", image=imgtk)
         canvas.image = imgtk  # giữ reference
 
+    #lưu ảnh
+    def save_compressed_image(self):
+        if self.compressed_image is None:
+            messagebox.showwarning("Lỗi", "Chưa có ảnh để lưu!")
+            return
+
+        file_path = filedialog.asksaveasfilename(
+            defaultextension=".jpg",
+            filetypes=[
+                ("JPEG", "*.jpg"),
+                ("PNG", "*.png")
+            ],
+            title="Chọn nơi lưu ảnh"
+        )
+
+        if not file_path:
+            return
+
+        save_image(self.compressed_image, file_path)
+
+        messagebox.showinfo("Thành công", "Đã lưu ảnh!")
 
 # main
 if __name__ == "__main__":
