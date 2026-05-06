@@ -36,4 +36,3 @@ Quy trình gồm:
 
 ---
 
-## 🏗️ Kiến trúc hệ thống
